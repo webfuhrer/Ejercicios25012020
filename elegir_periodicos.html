@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title></title>
+
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script>
+function seleccionarPeriodico(objeto_combo)
+{
+var objeto_enlace=document.getElementById("enlace");//Esto a veces existe y a veces no
+if (objeto_enlace)
+{
+//Existe el objeto enlace
+}
+else
+ {
+ var objeto_enlace=document.createElement("a");
+ }
+var periodico=objeto_combo.value;
+
+objeto_enlace.id="enlace";
+if (periodico=="elpais")
+	{
+	objeto_enlace.href="http://elpais.es";
+	objeto_enlace.innerText="Ir a El Pais";
+	}
+	else
+	{
+	objeto_enlace.href="http://elmundo.es";
+	objeto_enlace.innerText="Ir a El Mundo";
+	}
+var objeto_body=document.body;
+
+objeto_body.appendChild(objeto_enlace);
+}
+function cargarElementos()
+{
+/*
+<select id='periodico' onchange=seleccionarPeriodico(this)>
+	<option value='elpais'>El País</option>
+	<option value='elmundo'>El Mundo</option>
+</select>
+*/
+//Crear combo:
+var objeto_combo=document.createElement("select");
+objeto_combo.id="periodico";
+objeto_combo.onchange=function(){seleccionarPeriodico(this);}//href innerText
+var objeto_option1=document.createElement("option");
+objeto_option1.value="elpais";
+objeto_option1.innerText="El País";
+var objeto_option2=document.createElement("option");
+objeto_option2.value="elmundo";
+objeto_option2.innerText="El Mundo";
+objeto_combo.appendChild(objeto_option1);
+objeto_combo.appendChild(objeto_option2);
+var objeto_body=document.getElementsByTagName("body")[0];
+objeto_body.appendChild(objeto_combo);
+}
+</script>
+</head>
+<body onload="cargarElementos()">
+
+</body>
+</html>

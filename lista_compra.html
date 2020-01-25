@@ -1,0 +1,66 @@
+<html>
+<head>
+  <title></title>
+<style>
+.glyphicon-trash
+{
+cursor: pointer;
+}
+</style>
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script>
+function insertarProducto()
+{
+//<span  class="glyphicon glyphicon-trash" ></span>
+var producto=document.getElementById("producto").value;
+var elemento_ul=document.getElementById("lista");
+var elemento_li=document.createElement("li");
+
+var elemento_span=document.createElement("span");
+elemento_span.className="glyphicon glyphicon-trash";
+elemento_span.onclick=function(){borrar(this)}
+var texto=document.createTextNode(producto);
+<!--glyphicon-trash-->
+elemento_li.appendChild(texto);
+elemento_li.appendChild(elemento_span);
+elemento_li.onmouseover=function(){sombrear(this);}
+elemento_li.onmouseout=function(){clarear(this);}
+//Otra opción:
+//elemento_li.innerText=producto;
+elemento_ul.appendChild(elemento_li);
+document.getElementById("producto").value="";
+}
+function sombrear(objeto)
+{
+objeto.style.backgroundColor="gray";
+}
+function clarear(objeto)
+{
+objeto.style.backgroundColor="white";
+}
+function borrar(elemento_span)
+{
+//elñemento se refiere al objeto span. Desde ahí, subiré hasta su padre(li)
+//Luego al abuelo (ul) y a este ultimo le hare un removeChild
+var elemento_li_para_borrar=elemento_span.parentNode;
+var elemento_padre_li=elemento_li_para_borrar.parentNode;//elemento_padre_li es el ul
+elemento_padre_li.removeChild(elemento_li_para_borrar);
+
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+<ul id="lista"></ul>
+
+<br>
+<input type="text" id="producto"><button onclick="insertarProducto();">Añadir</button>
+</div>
+</body>
+
+
+
+</html>

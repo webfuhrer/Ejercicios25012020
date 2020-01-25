@@ -1,0 +1,35 @@
+<html>
+<head>
+  <title></title>
+
+
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script>
+function cargarElementos()
+{
+//<img src="imagenperro" onmouseover='ponerGato()' onmouseout='ponerPerro()'>
+//https://www.fundacion-affinity.org/sites/default/files/el-gato-necesita-tener-acceso-al-exterior.jpg
+//https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-a.jpg
+var obj_imagen=document.createElement("img");
+obj_imagen.src="https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-a.jpg";
+obj_imagen.style.width="100px";
+obj_imagen.onmouseover=function(){ponerGato();}
+obj_imagen.onmouseout=function(){ponerPerro();}
+document.body.appendChild(obj_imagen);
+}
+function ponerGato()
+{
+document.getElementsByTagName("img")[0].src="https://www.fundacion-affinity.org/sites/default/files/el-gato-necesita-tener-acceso-al-exterior.jpg";
+}
+function ponerPerro()
+{
+document.getElementsByTagName("img")[0].src="https://www.hola.com/imagenes/estar-bien/20190820147813/razas-perros-pequenos-parecen-grandes/0-711-550/razas-perro-pequenos-grandes-a.jpg";
+}
+
+</script>
+</head>
+<body onload="cargarElementos()">
+
+</body>
+</html>
